@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="TARUYA">
+  <rect width="96" height="96" rx="18" fill="#050505"/>
+  <path d="M14 70h68L49 16h-2L14 70Z" fill="#f3b44e"/>
+  <path d="M31 65 48 34l17 31H31Z" fill="#050505"/>
+  <path d="M26 77h44" stroke="#25d0c2" stroke-width="8" stroke-linecap="round"/>
+</svg>
