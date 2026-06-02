@@ -164,7 +164,7 @@ function Header({ socials }: { socials: SocialLink[] }) {
   const primarySocial = socials.find((social) => social.platform === "Instagram") || socials[0];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/45 backdrop-blur-2xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[rgba(239,181,79,.28)] bg-[linear-gradient(90deg,rgba(126,93,30,.82),rgba(17,54,48,.86)_42%,rgba(3,12,13,.94))] shadow-[0_18px_60px_rgba(0,0,0,.38)] backdrop-blur-2xl">
       <div className="mx-auto flex h-16 w-[min(1180px,calc(100vw-24px))] items-center justify-between">
   <a
   href="#home"
@@ -186,7 +186,7 @@ function Header({ socials }: { socials: SocialLink[] }) {
             <a
               key={item.href}
               href={item.href}
-              className="px-3 py-2 text-sm font-semibold uppercase text-zinc-300 transition hover:bg-white/10 hover:text-white"
+              className="px-3 py-2 text-sm font-semibold uppercase text-[#d7e9dd] transition hover:bg-[rgba(239,181,79,.16)] hover:text-[color:var(--gold)]"
             >
               {item.label}
             </a>
@@ -199,7 +199,7 @@ function Header({ socials }: { socials: SocialLink[] }) {
               href={primarySocial.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-10 items-center gap-2 border border-white/15 bg-white/10 px-3 text-sm font-bold uppercase text-white transition hover:border-[color:var(--green)] hover:bg-[color:var(--green)] hover:text-black"
+              className="inline-flex h-10 items-center gap-2 border border-[rgba(239,181,79,.34)] bg-[rgba(10,60,55,.5)] px-3 text-sm font-bold uppercase text-[#f4ead0] transition hover:border-[color:var(--gold)] hover:bg-[color:var(--gold)] hover:text-black"
             >
               <Instagram className="h-4 w-4" />
               Seguir
@@ -207,7 +207,7 @@ function Header({ socials }: { socials: SocialLink[] }) {
           ) : null}
           <a
             href="#contacto"
-            className="inline-flex h-10 items-center gap-2 bg-white px-4 text-sm font-black uppercase text-black transition hover:bg-[color:var(--gold)]"
+            className="inline-flex h-10 items-center gap-2 bg-[color:var(--gold)] px-4 text-sm font-black uppercase text-black transition hover:bg-[color:var(--green)]"
           >
             <Ticket className="h-4 w-4" />
             Booking
@@ -217,7 +217,7 @@ function Header({ socials }: { socials: SocialLink[] }) {
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
-          className="inline-flex h-10 w-10 items-center justify-center border border-white/15 bg-white/10 text-white lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center border border-[rgba(239,181,79,.38)] bg-[rgba(10,60,55,.5)] text-[#f4ead0] lg:hidden"
           aria-label={open ? "Cerrar menu" : "Abrir menu"}
           aria-expanded={open}
         >
@@ -230,7 +230,7 @@ function Header({ socials }: { socials: SocialLink[] }) {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
-          className="border-t border-white/10 bg-black/90 px-4 py-4 lg:hidden"
+          className="border-t border-[rgba(239,181,79,.24)] bg-[linear-gradient(180deg,rgba(4,32,31,.98),rgba(7,18,18,.98))] px-4 py-4 lg:hidden"
         >
           <div className="grid gap-2">
             {navItems.map((item) => (
@@ -238,7 +238,7 @@ function Header({ socials }: { socials: SocialLink[] }) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="border border-white/10 px-4 py-3 text-sm font-bold uppercase text-white"
+                className="border border-[rgba(239,181,79,.24)] bg-[rgba(255,255,255,.04)] px-4 py-3 text-sm font-bold uppercase text-[#f4ead0]"
               >
                 {item.label}
               </a>
@@ -262,11 +262,13 @@ function Hero({ content }: { content: SiteContent }) {
         <Radio className="h-3.5 w-3.5" />
         {content.hero.eyebrow}
       </div>
-      <h1 className="cinema-title text-5xl text-white sm:text-7xl md:text-8xl xl:text-[9.5rem]">
+      <h1 className="cinema-title max-w-full text-[clamp(2.45rem,10.8vw,4.75rem)] text-white sm:text-7xl md:text-8xl xl:text-[9.5rem]">
         {content.hero.title}
       </h1>
-      <p className="mt-4 text-lg font-black uppercase text-[color:var(--gold)] md:text-2xl">{content.hero.subtitle}</p>
-      <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-200 md:text-xl md:leading-8">{content.hero.body}</p>
+      <p className="mt-4 max-w-full text-[clamp(1.05rem,4.8vw,1.35rem)] font-black uppercase leading-tight text-[color:var(--gold)] md:text-2xl">
+        {content.hero.subtitle}
+      </p>
+      <p className="mt-5 max-w-2xl text-[clamp(1rem,4.2vw,1.125rem)] leading-7 text-zinc-200 md:text-xl md:leading-8">{content.hero.body}</p>
 
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">
         {content.hero.ctas.map((cta) => (
@@ -274,7 +276,7 @@ function Hero({ content }: { content: SiteContent }) {
             key={cta.href}
             href={cta.href}
             className={cn(
-              "inline-flex h-12 items-center justify-center gap-2 border px-5 text-sm font-black uppercase transition",
+              "inline-flex min-h-12 items-center justify-center gap-2 border px-5 py-3 text-center text-sm font-black uppercase leading-tight transition",
               cta.variant === "primary" && "border-[color:var(--green)] bg-[color:var(--green)] text-black hover:bg-white",
               cta.variant === "secondary" && "border-white/20 bg-white text-black hover:bg-[color:var(--gold)]",
               cta.variant === "ghost" && "border-white/20 bg-white/10 text-white backdrop-blur-xl hover:border-white hover:bg-white/20"
@@ -294,7 +296,7 @@ function Hero({ content }: { content: SiteContent }) {
           <ImageStage
             asset={content.hero.background}
             className="h-full w-full"
-            imageClassName="object-[55%_center]"
+          imageClassName="object-[48%_center] md:object-[55%_center]"
             priority
             sizes="100vw"
           />
@@ -304,7 +306,7 @@ function Hero({ content }: { content: SiteContent }) {
           <ImageStage
             asset={content.hero.background}
             className="h-full w-full"
-            imageClassName="object-[55%_center]"
+            imageClassName="object-[48%_center] md:object-[55%_center]"
             priority
             sizes="100vw"
           />
@@ -325,7 +327,7 @@ function Hero({ content }: { content: SiteContent }) {
         </div>
       </div>
 
-      <div className="section-shell relative z-10 flex min-h-screen items-end pb-10 pt-32 md:pb-16">
+      <div className="section-shell relative z-10 flex min-h-screen items-end pb-8 pt-36 md:pb-16 md:pt-32">
         <div className="grid w-full max-w-5xl gap-8 lg:items-end">
           {hydrated ? (
             <motion.div
